@@ -1,0 +1,103 @@
+
+virtual_malloc_test
+mallloc 2000: 
+allocated 2048
+free 2048
+
+mallloc 2^7: 
+allocated 2048
+allocated 128
+free 128
+free 256
+free 512
+free 1024
+
+mallloc 30: 
+allocated 2048
+allocated 128
+allocated 32
+free 32
+free 64
+free 256
+free 512
+free 1024
+
+mallloc 2^5: 
+allocated 2048
+allocated 128
+allocated 32
+free 32
+free 64
+allocated 128
+free 128
+free 512
+free 1024
+
+virtual_free_null_test
+
+free NULL: 
+
+virtual_free_test
+virtual sbrk p1 2000: 
+
+free p1: 
+
+virtual_free_test
+mallloc p1 2000: 
+
+mallloc p2 2^7: 
+
+free p2: 
+allocated 2048
+free 2048
+free 4096
+free 8192
+
+free p1: 
+free 16384
+
+virtual_free_test
+mallloc p1 2000: 
+allocated 2048
+free 2048
+free 4096
+free 8192
+realloc p1 30: 
+free 16384
+
+virtual_free_null_test
+
+realloc null p1 30: 
+allocated 32
+free 32
+free 64
+free 128
+free 256
+free 512
+free 1024
+free 2048
+free 4096
+free 8192
+
+virtual_free_test
+
+mallloc p1 2000: 
+
+realloc p1 30: 
+
+mallloc p2 2^7: 
+
+free p2: 
+allocated 32
+free 32
+free 64
+free 128
+free 256
+free 512
+free 1024
+free 2048
+free 4096
+free 8192
+
+free p1: 
+free 16384
